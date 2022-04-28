@@ -44,8 +44,7 @@ if not os.path.exists(PATH_TO_CKPT):
 
 # Download labels file
 LABEL_FILENAME = 'mscoco_label_map.pbtxt'
-LABELS_DOWNLOAD_BASE = \
-    'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'
+LABELS_DOWNLOAD_BASE = 'https://raw.githubusercontent.com/tensorflow/models/master/research/object_detection/data/'
 PATH_TO_LABELS = os.path.join(MODELS_DIR, os.path.join(MODEL_NAME, LABEL_FILENAME))
 if not os.path.exists(PATH_TO_LABELS):
     print('Downloading label file... ', end='')
@@ -74,6 +73,7 @@ def detect_fn(image):
 
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 
+# video settings
 cap = cv2.VideoCapture(sys.argv[1])
 
 fps = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -83,12 +83,11 @@ fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
 size = (frame_width,frame_height)
 
-#fourcc = cv2.VideoWriter_fourcc(*'h264')
-#fourcc = cv2.VideoWriter_fourcc('M','J','P','G')
 out = cv2.VideoWriter('./data/out.mp4',fourcc, fps, size)
 
+# main loop
 while cap.isOpened():
-    # Read frame from camera
+    # Read frame from video
     ret, image_np = cap.read()
 
     if ret == True:
@@ -115,7 +114,7 @@ while cap.isOpened():
         # save to video
         out.write(cv2.resize(image_np_with_detections, size))
         # Display output
-        cv2.imshow('object detection', cv2.resize(image_np_with_detections, size))
+        #cv2.imshow('object detection', cv2.resize(image_np_with_detections, size))
 
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break
