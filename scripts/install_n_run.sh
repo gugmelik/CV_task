@@ -20,5 +20,5 @@ then
 fi
 
 
-source $env_name/bin/activate
+. ./$env_name/bin/activate
 python src/detect.py $1

@@ -76,7 +76,7 @@ category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABE
 # video settings
 cap = cv2.VideoCapture(sys.argv[1])
 
-fps = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+fps = 60
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -86,6 +86,7 @@ size = (frame_width,frame_height)
 out = cv2.VideoWriter('./data/out.mp4',fourcc, fps, size)
 
 # main loop
+print("Detecting objects in video...")
 while cap.isOpened():
     # Read frame from video
     ret, image_np = cap.read()
@@ -116,7 +117,7 @@ while cap.isOpened():
         # Display output
         #cv2.imshow('object detection', cv2.resize(image_np_with_detections, size))
 
-        if cv2.waitKey(25) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     else:
         break
@@ -124,4 +125,5 @@ while cap.isOpened():
 cap.release()
 out.release()
 cv2.destroyAllWindows()
-print("Video saved to 'data' directory")
+print('Done')
+print("Video saved to 'data/out.mp4'")

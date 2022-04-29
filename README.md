@@ -29,3 +29,6 @@ chmod +x ./scripts/install_n_run.sh
 
 Video will be saved at data/out.mp4
 
+## Credits
+
+This tutorial's main source code comes from [TensorFlow Object Detection API Tutorial](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/auto_examples/index.html#examples) with some modification.
