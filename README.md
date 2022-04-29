@@ -24,7 +24,7 @@ git submodule update --init
 
 ```bash
 chmod +x ./scripts/install_n_run.sh
-./scripts/install_n_run.sh
+./scripts/install_n_run.sh ./data/video.mp4
 ```
 
 Video will be saved at data/out.mp4
