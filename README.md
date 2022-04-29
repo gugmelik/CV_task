@@ -27,4 +27,5 @@ chmod +x ./scripts/install_n_run.sh
 ./scripts/install_n_run.sh
 ```
 
+Video will be saved at data/out.mp4
 
