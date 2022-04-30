@@ -7,7 +7,6 @@ then
   pip install virtualenv
   virtualenv --python=python3.7 $env_name
   . ./$env_name/bin/activate && echo "successfully activated $env_name python is $(which python)"
-  pip install -r requirements.txt
   cd models/research
   # Compile protos.
   apt install -y protobuf-compiler
